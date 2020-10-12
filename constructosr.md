@@ -145,7 +145,7 @@ class A {
 
 ***Explanation:***
 
-* The toString() method overrided the default value of toString() of class A
+* The overriden toString() method helps in getting the object states.
 
 # Question:4
 
@@ -400,18 +400,65 @@ class B
 * Here, it will give compilation error at printing the vaue of a.i at class B of package com.pkg1 because we can not access a private field from another class but we can access private , public as well as default field from another class but inside same package.
 * If we create getter method in class A of package com.pkg1 and print i through that getter method inside class B of package com.pkg1 then we can avoid that first compilation error at class B of package com.pkg1.
 * In class B of package com.pkg2 we have created ana object of class A but there no class named A , so there will be compilation error.
+* If we will import the package com.pkg1.A in class B of package com.pkg2  and make the class A of package com.pkg1 public .
+* But still at printing  a.i and a.k there will be compilation error, because we cann't access private and default as well as protected field from another package , we can only access public variable from another package. We have to create getter method at in class A of package com.pkg1 and print the value of field i and k through getters.
 
 ***Modified Program:***
 ```java
+package com.pkg1;
+
+public class A
+{
+    private int i = 10;
+    public int j = 100;
+    int k = 50;
+
+
+    public int getI() {
+        return i;
+    }
+
+    public int getK() {
+        return k;
+    }
+}
+package com.pkg1;
+
+class B {
+  public static void main(String[] args)
+{
+    A a = new A();
+    System.out.println(a.getI());
+    System.out.println(a.j);
+    System.out.println(a.k); 
+}
+}
+package com.pkg2;
+
+import com.pkg1.A;
+class B
+{
+    public static void main(String[] args)
+    {
+        A a = new A();
+        System.out.println(a.getI());
+        System.out.println(a.j);
+        System.out.println(a.getK());
+    }
+}
 
 ```
 ***Output:***
 
+For package com.pkg1;
+* 10
+* 100
+* 50
 
-
-***Explanation:***
-
-
+For package com.pkg2;
+* 10
+* 100
+* 50
 
 # Question:13
 
@@ -419,19 +466,78 @@ Why we use getters and setters for a class. Give an example.
 
 ***Answer:***
 
-
+* Setters are used to set field values .
+* Getters are used to get the field values that are asssigned earlier by using setters.
 
 ***Example:***
 ```java
+public class Person {
 
+    private String firstName;
+    private String lastName;
+    private int age;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public boolean isTeen(){
+        if(age > 12 && age <20){
+            return true;
+        }
+        else
+            return false;
+    }
+    public String getFullName(){
+        if (firstName.isEmpty() && lastName.isEmpty()){
+            return null;
+        }
+        else if(lastName.isEmpty()){
+            return firstName;
+        }
+        else if(firstName.isEmpty()){
+            return lastName;
+        }
+        else
+            return firstName+" "+lastName;
+    }
+
+    public static void main(String[] args)
+     {
+
+        Person person = new Person();
+
+        person.setFirstName("");       // firstName is set to empty string
+        person.setLastName("");        // lastName is set to empty string
+        person.setAge(10);
+
+        System.out.println("fullName= " + person.getFullName());
+        System.out.println("teen= " + person.isTeen());
+        person.setFirstName("John");    // firstName is set to John
+
+        person.setAge(18);
+        System.out.println("fullName= " + person.getFullName());
+        System.out.println("teen= " + person.isTeen());
+        person.setLastName("Smith");    // lastName is set to Smith
+        System.out.println("fullName= " + person.getFullName());
+
+    }
+}
 ```
 ***Output:***
 
-
-
-***Explanation:***
-
-
+* fullName= null
+* teen= false
+* fullName= John
+* teen= true
+* fullName= John Smith
 
 # Question:14
 
