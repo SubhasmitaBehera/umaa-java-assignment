@@ -4,15 +4,34 @@ Write a simple example of a Product class where it uses this constructor with pa
 ***Program:***
 
 ```java
+public class Product {
+    public int num1;
+    public int num2;
+    public int res;
+    
+    public Product(int num1, int num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+        res = this.num1 * this.num2 ;
+        System.out.println("Product of " +num1+ " and " +num2+ " is " +res);
+    }
 
+    public static void main(String[] args) {
+        Product product = new Product(11 , 22);
+    }
+}
 ```
+***Output:***
+
+* Product of 11 and 22 is 242
 
 # Question:2
 Does toString() method present in java.lang.Object class? If yes what the implementaion for toString() method given by java.lang.Object class.
 
 ***Answer:***
 
-
+* Yes toString() method present in java.lang.Object class. 
+*  The toString() method for class Object returns a string consisting of the name of the class of which the object is an instance, the at-sign character ` @ ', and the unsigned hexadecimal representation of the hash code of the object, which is usually not what was intended.
 
 # Question:3
 Override toString() method in the class A (as given below) such that it will print the value of i, j, k.
@@ -79,6 +98,9 @@ What is StackOverflowError. When it occurs. It comes under which package in java
 
 ***Answer:***
 
+* StackOverflowError is an error which Java doesn't allow to catch, for instance, stack running out of space, as it's one of the most common runtime errors one can encounter.
+* lang. stackoverflowerror is indicative of serious problems that an application cannot catch (e.g., stack running out of space). It is usually caused by a no terminating condition of the recursive call.
+* It comes under java.lang package in java library.
 
 # Question:5
 
@@ -362,6 +384,8 @@ Why we use getters and setters for a class. Give an example.
 Why it is good to have private fields with public getters & setters?
 
 ***Answer:***
+
+* By providing setter ,getter we have better control over the data and we can make sure that data integrity is maintained, so we keep instance variables(data) as private and provide public methods(API) to access them ,in a class.
 
 
 
