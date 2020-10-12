@@ -4,25 +4,34 @@ Write a simple example of a Product class where it uses this constructor with pa
 ***Program:***
 
 ```java
-public class Product {
-    public int num1;
-    public int num2;
-    public int res;
-    
-    public Product(int num1, int num2) {
-        this.num1 = num1;
-        this.num2 = num2;
-        res = this.num1 * this.num2 ;
-        System.out.println("Product of " +num1+ " and " +num2+ " is " +res);
-    }
+ class Product {
+        private int num1;
+        private int num2;
+        private int res;
 
-    public static void main(String[] args) {
-        Product product = new Product(11 , 22);
+        public Product(int num1, int num2) {
+            this();
+            this.num1 = num1;
+            this.num2 = num2;
+            res = this.num1 * this.num2 ;
+            System.out.println("Product of " +num1+ " and " +num2+ " is " +res);
+        }
+
+        public Product(){
+            System.out.println("Product of two numbers:~");
+        }
     }
-}
+    public class Example {
+
+    public static void main(String[] args){
+
+            Product product = new Product(11, 22);
+        }
+    }
 ```
 ***Output:***
 
+* Product of two numbers:~
 * Product of 11 and 22 is 242
 
 # Question:2
@@ -31,7 +40,7 @@ Does toString() method present in java.lang.Object class? If yes what the implem
 ***Answer:***
 
 * Yes toString() method present in java.lang.Object class. 
-*  The toString() method for class Object returns a string consisting of the name of the class of which the object is an instance, the at-sign character ` @ ', and the unsigned hexadecimal representation of the hash code of the object, which is usually not what was intended.
+* The toString() method for class Object returns a string consisting of the name of the class of which the object is an instance, the at-sign character ` @ ', and the unsigned hexadecimal representation of the hash code of the object, which is usually not what was intended.
 
 # Question:3
 Override toString() method in the class A (as given below) such that it will print the value of i, j, k.
@@ -82,15 +91,61 @@ class A {
 
 ***Modified Program:***
 ```java
+public class Test {
+    public static void main(String[] args) {
+        A a = new A(10, 20);
+        a.setK(400);
+        System.out.println(a);
+    }
+}
 
+class A {
+    private int i;
+    private int j;
+    private int k;
+
+    @Override
+    public String toString() {
+        return "A{" + "i=" + i + ", j=" + j + ", k=" + k + "}";
+    }
+
+    public A(int i, int j) {
+        this.i = i;
+        this.j = j;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int getJ() {
+        return j;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+    }
+
+    public int getK() {
+        return k;
+    }
+
+    public void setK(int k) {
+        this.k = k;
+    }
+}
 ```
 ***Output:***
 
-
+* A{i=10, j=20, k=400}
 
 ***Explanation:***
 
-
+* The toString() method overrided the default value of toString() of class A
 
 # Question:4
 
@@ -130,14 +185,7 @@ class A
 
 ***Answer:***
 
-
-
-***Output:***
-
-
-
-
-***Explanation:***
+* No the above code won't compile. There is a recursion between A() and A(int x) meethods therefore it will give StackOverFlowError in runtime.
 
 
 # Question:6
@@ -162,7 +210,7 @@ class A
 
 ***Answer:***
 
-
+* No, the above code won't compile cause there is no Main method. And if we create a main method then it will give recursive constructor invocation error in compile time.
 
 # Question:7
 
@@ -198,11 +246,11 @@ class A
 ```
 ***Output:***
 
-
+* even
 
 ***Explanation:***
 
-
+* In main method, constructor A() called , in constructor A() one parameterized constructor called with argument 10. There the value of field x updated to 10 and 10 % 2 = 0 , so the output is even.
 
 # Question:8
 
@@ -218,7 +266,7 @@ class A
 ```
 ***Answer:***
 
-
+* The above code won't compile. It will give StackOverFlowError at runtime.
 
 # Question:9
 
@@ -234,7 +282,7 @@ class A
 ```
 ***Answer:***
 
-
+* The above code won't compile because this is a recursive invocation of constructor, so that it will give recursive constructor invocation at compile time.
 
 # Question:10
 
@@ -265,11 +313,13 @@ class A
 ```
 ***Output:***
 
-
+* false
 
 ***Explanation:***
 
-
+* Here, we create a object of constructor A(int x) inside constructor A()
+* Here, inside constructor A(int x) this.hashcode has assigned to this.hashValue. It will only update the value of field hashValue only for constructor A(int x).
+* But in main method we have ctreated object 'a' for non-parameterized constructor A(). The value of a.hashValue  and a.hashCode() are not equal. So the ouput is false.
 
 # Question:11
 
@@ -300,11 +350,13 @@ class A
 ```
 ***Output:***
 
-
+* true
 
 ***Explanation:***
 
-
+* Here, we call [this(10);] inside the non-parameterized constructor A().
+* Here, inside constructor A(int x) this.hashcode has assigned to this.hashValue. It will update the value of field hashValue for constructor A(int x) as well as the non-parameterized constructor A().
+* In main method we have ctreated object 'a' for non-parameterized constructor A(). The value of a.hashValue  and a.hashCode() are equal. So the ouput is "true".
 
 # Question:12
 
@@ -345,7 +397,9 @@ class B
 ```
 ***Answer:***
 
-
+* Here, it will give compilation error at printing the vaue of a.i at class B of package com.pkg1 because we can not access a private field from another class but we can access private , public as well as default field from another class but inside same package.
+* If we create getter method in class A of package com.pkg1 and print i through that getter method inside class B of package com.pkg1 then we can avoid that first compilation error at class B of package com.pkg1.
+* In class B of package com.pkg2 we have created ana object of class A but there no class named A , so there will be compilation error.
 
 ***Modified Program:***
 ```java
