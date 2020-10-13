@@ -266,7 +266,7 @@ class A
 ```
 ***Answer:***
 
-* The above code won't compile. It will give StackOverFlowError at runtime.
+* The above code will compile. But it will give StackOverFlowError at runtime.
 
 # Question:9
 
