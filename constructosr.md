@@ -185,7 +185,7 @@ class A
 
 ***Answer:***
 
-* No the above code won't compile. There is a recursion between A() and A(int x) meethods therefore it will give StackOverFlowError in runtime.
+* The above code will compile. But there is a recursion between this() and A(int x) meethods therefore it will give StackOverFlowError at runtime.
 
 
 # Question:6
