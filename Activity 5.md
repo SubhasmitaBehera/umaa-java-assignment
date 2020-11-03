@@ -1,4 +1,4 @@
-# Qyestion 1
+# Question 1
 
 Code example of inheritance. Reuse static/non-static method(s) & static/non-static variable(s).
 
@@ -81,20 +81,66 @@ public class Test {
 * My age is 10
 * Sumit is my parent...
 
-# Qusetion 2
+# Question 2
 
 Code example of instance of operator using classes as BaseParent->Parent->Child.
 
 ***Program:***
 
 ```java
+public class Test {
 
+    public static void main(String[] args) {
+
+            Parent parentRefVar = new Parent();
+            Parent childRefVar = new Child();
+
+        System.out.println(parentRefVar instanceof Object);
+
+        System.out.println(parentRefVar instanceof BaseParent);
+
+        System.out.println(parentRefVar instanceof Parent);
+
+        System.out.println(parentRefVar instanceof Child);
+
+        System.out.println(childRefVar instanceof Child);
+
+    }
+
+    private static class BaseParent{
+        public BaseParent(){
+            System.out.println("This is base-parent class....");
+        }
+    }
+    private static class Parent extends BaseParent{
+        public Parent(){
+            System.out.println("This is parent class....");
+        }
+    }
+
+    private static class Child extends Parent {
+        public Child(){
+            System.out.println("This is child class....");
+        }
+
+    }
+}
 ```
 
 ***Output:***
 
+* This is base-parent class....
+* This is parent class....
+* This is base-parent class....
+* This is parent class....
+* This is child class....
+* true
+* true
+* true
+* false
+* true
 
-# Qusetion 3
+# Question 3
 
 Code example of super constructor.
 
@@ -140,7 +186,7 @@ public class Test {
 
 
 
-# Qusetion 4
+# Question 4
 
 Does multiple object created in inheritance hierarchy.
 
@@ -148,7 +194,7 @@ Does multiple object created in inheritance hierarchy.
 
 No, a single object is created in inheritance hierarchy.
 
-# Qusetion 5
+# Question 5
 
 Does super constructor invocation creates one more object.
 
@@ -156,7 +202,7 @@ Does super constructor invocation creates one more object.
 
 No, super constructor invocation does not create one more object.
 
-# Qusetion 6
+# Question 6
 
 Code example of method hiding.
 
@@ -225,7 +271,7 @@ public class Test {
 * Cat look like Tiger, so Cat and Tiger are same.
 * false
 
-# Qusetion 7
+# Question 7
 
 Code example of variable hiding.
 
@@ -233,13 +279,48 @@ Code example of variable hiding.
 
 ```java
 
+public class Test {
+
+    public static void main(String[] args) {
+
+        Bird c = new Parrot();
+        System.out.println(c.str);    //this is variable hiding
+        c.m1();
+
+        Parrot d = new Parrot();
+        System.out.println(d.str);
+    }
+
+
+    public static class Bird
+    {
+        public String str = "All Birds are not Parrot..." ;
+
+        public void m1() {
+            System.out.println("This is parent class.");
+        }
+
+    }
+
+    public static class Parrot extends Bird
+    {
+        public static String str = "All Parrots are Bird...";
+        public  void m1(){
+            System.out.println("This is child class.");
+
+        }
+    }
+}
+
 ```
 
 ***Output:***
 
-* 
+* All Birds are not Parrot...
+* This is child class.
+* All Parrots are Bird...
 
-# Qusetion 8
+# Question 8
 
 Does static methods overridden.
 
@@ -247,7 +328,7 @@ Does static methods overridden.
 
 No, static method does not override.
 
-# Qusetion 9
+# Question 9
 
 Does private methods overriden.
 
@@ -255,7 +336,7 @@ Does private methods overriden.
 
 No, private method does not override.
 
-# Qusetion 10
+# Question 10
 
 By default any class extends which class.
 
@@ -263,7 +344,7 @@ By default any class extends which class.
 
 By default any class extends object class.
 
-# Qusetion 11
+# Question 11
 
 List down the public/protected (inherited) methods present in java.lang.Object class.
 
@@ -287,7 +368,7 @@ List down the public/protected (inherited) methods present in java.lang.Object c
 * clone()
 * finalize()
 
-# Qusetion 12
+# Question 12
 
 Find the output:
 
@@ -317,14 +398,20 @@ class Test
 
 }
 ```
+***Answer:***
+
+* There will be a compilation error because sumValue(int x) method is not present in class A.
+* If we create a sumValue(int x) method in class A then the error can be avoided.
+* If we type cast to [int result = ((B) a).sumValue(a.i);] , then the error can be avoided.
 
 ***Output:***
 
+* 160
 
 ***Explanation:***
 
 
-# Qusetion 13
+# Question 13
 
 Fix the code with all the approaches you know.
 
@@ -346,10 +433,9 @@ class B extends A
    }
 }
 ```
-***Fixed program:***
+***Answer:***
 
-```java
-
-```
-***Output:***
+* There will be compilation error at [public B()]
+* If we create no argument constructor inside class A , the error can be fixed.
+* If we call super function with one argument inside constructor B, the error can be fixed.
 
