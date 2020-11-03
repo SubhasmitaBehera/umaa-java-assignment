@@ -5,11 +5,81 @@ Code example of inheritance. Reuse static/non-static method(s) & static/non-stat
 ***Program:***
 
 ```java
+public class Test {
+    public static void main(String[] args) {
+        Child a = new Child();
+    }
 
+    private static class Parent {
+        public static String pName = getPName();
+        public int pAge = getPAge();
+
+        static {
+            System.out.println("My name is "+pName);
+        }
+
+        {
+            System.out.println("My age is "+pAge);
+        }
+
+        public Parent(String cName) {
+            System.out.println(cName+" is my child...");
+        }
+
+        public static String getPName() {
+            System.out.println("This is a parent class...");
+            return "Sumit";
+        }
+
+        public int getPAge()
+        {
+            System.out.println("I am a doctor.");
+            return 40;
+        }
+    }
+
+    private static class Child extends Parent {
+        public static String cName = getCName();
+        public int cAge = getCAge(); 
+
+        static {
+            System.out.println("My name is "+cName); 
+        }
+
+        {
+            System.out.println("My age is "+cAge); 
+        }
+        
+        public Child() {
+            super(cName);
+            System.out.println(pName+" is my parent...");
+        }
+
+        public static String getCName() {
+            System.out.println("This is a child class...");
+            return "Amit";
+        }
+
+        public int getCAge() {
+            System.out.println("I am a student.");
+            return 10;
+        }
+    }
+}
 ```
 
 ***Output:***
 
+* This is a parent class...
+* My name is Sumit
+* This is a child class...
+* My name is Amit
+* I am a doctor.
+* My age is 40
+* Amit is my child...
+* I am a student.
+* My age is 10
+* Sumit is my parent...
 
 # Qusetion 2
 
@@ -93,11 +163,67 @@ Code example of method hiding.
 ***Program:***
 
 ```java
+public class Test {
 
+    public static void main(String[] args) {
+
+        Tiger tiger = new Tiger();
+        tiger.name();
+        boolean a = tiger.isSame();
+        System.out.println(a);
+
+        Tiger cat1 = new Cat();
+        cat1.name();
+        boolean b = cat1.isSame();
+        System.out.println(b);
+
+        Cat cat2 = new Cat();
+        cat2.name();
+        boolean c = cat2.isSame();
+        System.out.println(c);
+
+    }
+
+    public static class Tiger
+    {
+        public void name()
+        {
+            System.out.println("This is a Tiger...");
+        }
+        public static boolean isSame()
+        {
+            System.out.println("Tiger and Cat can not be same.");
+            return true;
+        }
+    }
+
+    public static class Cat extends Tiger
+    {
+        public void name()
+        {
+            System.out.println("This is a Cat...");
+        }
+
+        public static boolean isSame()
+        {
+            System.out.println("Cat look like Tiger, so Cat and Tiger are same.");
+            return false;
+        }
+    }
+}
 ```
 
 ***Output:***
 
+* This is a Tiger...
+* Tiger and Cat can not be same.
+* true
+* This is a Cat...
+* Tiger and Cat can not be same.
+* true
+* This is a Cat...
+* Cat look like Tiger, so Cat and Tiger are same.
+* false
 
 # Qusetion 7
 
@@ -111,6 +237,7 @@ Code example of variable hiding.
 
 ***Output:***
 
+* 
 
 # Qusetion 8
 
