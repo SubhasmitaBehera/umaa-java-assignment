@@ -31,10 +31,42 @@ Code example of super constructor.
 ***Program:***
 
 ```java
+public class Test {
+    public static void main(String[] args) {
+        Child c = new Child();
+        Child a = new Child(8);
+    }
+    public static class Parent {
+
+        public Parent(int age) {
+            System.out.println("My(parent) age is "+age);
+        }
+
+        public Parent() {
+            System.out.println("I am parent...");
+        }
+    }
+
+    public static class Child extends Parent {
+        public Child() {
+//            super();
+            System.out.println("I am child...");
+        }
+        public Child(int age){
+            super(30);
+            System.out.println("My(child) age is "+age);
+        }
+    }
+}
 
 ```
 
 ***Output:***
+
+* I am parent...
+* I am child...
+* My(parent) age is 30
+* My(child) age is 8
 
 
 
@@ -44,6 +76,7 @@ Does multiple object created in inheritance hierarchy.
 
 ***Answer:***
 
+No, a single object is created in inheritance hierarchy.
 
 # Qusetion 5
 
@@ -51,6 +84,7 @@ Does super constructor invocation creates one more object.
 
 ***Answer:***
 
+No, super constructor invocation does not create one more object.
 
 # Qusetion 6
 
@@ -84,13 +118,15 @@ Does static methods overridden.
 
 ***Answer:***
 
+No, static method does not override.
 
 # Qusetion 9
 
-Deos private methods overriden.
+Does private methods overriden.
 
 ***Answer:***
 
+No, private method does not override.
 
 # Qusetion 10
 
@@ -98,13 +134,31 @@ By default any class extends which class.
 
 ***Answer:***
 
+By default any class extends object class.
 
 # Qusetion 11
 
-List down the public/protected (inherited) methods present in java.lag.Object class.
+List down the public/protected (inherited) methods present in java.lang.Object class.
 
 ***Answer:***
 
+## Public:-
+
+* Object()
+* equals(Object obj)
+* Class<?> getClass()
+* hashCode()
+* notify()
+* notifyAll()
+* toString()
+* wait()
+* wait(long var1) 
+* wait(long timeoutMillis, int nanos)
+
+## Protected:-
+
+* clone()
+* finalize()
 
 # Qusetion 12
 
