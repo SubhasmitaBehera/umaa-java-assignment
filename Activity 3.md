@@ -398,7 +398,7 @@ class B
 ```
 ***Answer:***
 
-* Here, it will give compilation error at printing the vaue of a.i at class B of package com.pkg1 because we can not access a private field from another class but we can access private , public as well as default field from another class but inside same package.
+* Here, it will give compilation error at printing the vaue of a.i at class B of package com.pkg1 because we can not access a private field from another class but we can access protected , public as well as default field from another class but inside same package.
 * If we create getter method in class A of package com.pkg1 and print i through that getter method inside class B of package com.pkg1 then we can avoid that first compilation error at class B of package com.pkg1.
 * In class B of package com.pkg2 we have created ana object of class A but there no class named A , so there will be compilation error.
 * If we will import the package com.pkg1.A in class B of package com.pkg2  and make the class A of package com.pkg1 public .
