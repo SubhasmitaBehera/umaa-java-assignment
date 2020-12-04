@@ -32,7 +32,7 @@ Write a simple example of a Product class where it uses this constructor with pa
 ```
 ***Output:***
 
-* Product of two numbers:~
+* Product of two numbers :~
 * Product of 11 and 22 is 242
 
 # Question:2
