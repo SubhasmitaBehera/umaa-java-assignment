@@ -9,10 +9,26 @@ Traverse an 1d array using while loop.
 ***Answer:***
 
 ```java
-
+public class ArrayTraverse {
+        public static void main(String[] args) {
+            String arr[] = {"subhasmita","sangita","ritu", "saroj", "bibhu"};
+            int i = 0;
+            while (i < arr.length)
+            {
+                System.out.println(arr[i]);
+                i++;
+            }
+        }
+}
 ```
  ***Output:***
  
+subhasmita  
+sangita  
+ritu   
+saroj  
+bibhu  
+
  ***Quesdtion:2***
 
 Traverse a 2d array using column major or row major.
